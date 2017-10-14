@@ -46,7 +46,8 @@ void JumpingHippo::initSpawner()
         spikesSprite->setScale(0.25f);
         spikesSprite->setPosition(Vec2(size.width, size.height/2));
         
-        auto moveToLeft = MoveTo::create(2.f, Vec2(0, size.height/2));
+        // Movement to the left part
+        auto moveToLeft = MoveTo::create(2.f, Vec2(-30, size.height/2));
         spikesSprite->runAction(moveToLeft);
         
     }, 1.f, 10, 1.f, "spawnerCallBack");
@@ -59,6 +60,10 @@ void JumpingHippo::initClickListener()
     mouseListener->onTouchBegan = [=](Touch* touch, Event* event){
         auto jump = JumpBy::create(0.8, Vec2::ZERO, 150, 1);
         hippoSprite->runAction(jump);
+        
+        auto rotate = RotateBy::create(0.5f, 360.0f);
+        hippoSprite->runAction(rotate);
+        
         return true;
     };
     mouseListener->onTouchMoved = [=](Touch* touch, Event* event){};

@@ -41,11 +41,11 @@ void Board::initTiles()
     firstTileSize = stoneTile->getContentSize();
     firstTilePosition = stoneTile->getPosition();
     
-    // Developing games
-    vector<string> developingGames = {"Jumping Hippo", "Chips"};
+    // Developing games (yep, it works, sometimes we need to make things we don't want because of time)
+    vector<string> developingGames = {"Jumping Hippo", "Chips", "Jumping Hippo", "Chips", "Jumping Hippo", "Chips"};
     
     //6 tiles
-    for(int i = 1; i <= 2; i++)
+    for(int i = 1; i < 7; i++)
     {
         Sprite* tile = Sprite::create("grass.png");
         
@@ -106,6 +106,7 @@ void Board::stopDiceAndMove()
     auto jumps = JumpTo::create(actualNumber * 0.6, finalPosition, 60, actualNumber);
     
     playerSprite->runAction(jumps);
+    playerSprite->setTexture("p_jump.png");
     
     schedule([=](float dt){
         Director::getInstance()->pushScene(sceneConstructors[actualNumber-1]());
