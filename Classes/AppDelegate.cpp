@@ -103,8 +103,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // create a scene. it's an autorelease object
 
-    // auto scene = Board::createScene();
-    auto scene = JumpingHippo::createScene();
+    auto scene = Board::createScene();
+    // auto scene = JumpingHippo::createScene();
     
     // run
     director->runWithScene(scene);
