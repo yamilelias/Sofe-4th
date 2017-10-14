@@ -41,8 +41,11 @@ void Board::initTiles()
     firstTileSize = stoneTile->getContentSize();
     firstTilePosition = stoneTile->getPosition();
     
+    // Developing games
+    vector<string> developingGames = {"Jumping Hippo", "Chips"};
+    
     //6 tiles
-    for(int i = 1; i < 7; i++)
+    for(int i = 1; i <= 2; i++)
     {
         Sprite* tile = Sprite::create("grass.png");
         
@@ -60,7 +63,7 @@ void Board::initTiles()
         label->setPosition(Vec2(tile->getContentSize().width/2, 0));
         
         tile->addChild(label);
-        label->setString(sceneNames[i-1]);
+        label->setString(developingGames[i-1]);
     }
 }
 
@@ -112,10 +115,10 @@ void Board::stopDiceAndMove()
 void Board::startDice()
 {
     Size screenSize = Director::getInstance()->getVisibleSize();
-    auto diceLabel = Label::create();
+    auto diceLabel = Sprite::create();
     
     diceLabel->setPosition(Vec2(screenSize/3.f * 2.f));
-    diceLabel->setSystemFontSize(40);
+//    diceLabel->setSystemFontSize(40);
     
     addChild(diceLabel);
     
@@ -126,7 +129,9 @@ void Board::startDice()
         
         string text = "";
         text.push_back(actualNumber+'0');
-        diceLabel->setString(text);
+        // Set dice instead of a label
+        string file = "dice" + text + ".png";
+        diceLabel->initWithFile(file);
         
     }, 0.1f, -1, 0, "changeDiceNumber");
     
