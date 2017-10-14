@@ -67,7 +67,7 @@ void JumpingHippo::initSpawner()
         spikesSprite->runAction(moveToLeft);
         
     }, 1.f, 99999, 1.f, "spawnerCallBack");
-    // Is unlimited... I don't believe someone can achieve that number
+    // Is unlimited... I don't believe someone can achieve that number :)
 }
 
 void JumpingHippo::initClickListener()
